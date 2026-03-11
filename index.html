@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Typer</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Cat Typer By Consolemaster81</div>
+            <button class="theme-toggle" id="themeToggle">Dark</button>
+        </div>
+
+        <div class="config-bar" id="configBar">
+            <div class="config-group">
+                <div class="config-label">Words</div>
+                <div class="config-options">
+                    <button class="config-btn active" data-mode="words" data-value="10">10</button>
+                    <button class="config-btn" data-mode="words" data-value="30">30</button>
+                    <button class="config-btn" data-mode="words" data-value="50">50</button>
+                </div>
+            </div>
+            <div class="config-group">
+                <div class="config-label">Time</div>
+                <div class="config-options">
+                    <button class="config-btn" data-mode="time" data-value="5">5s</button>
+                    <button class="config-btn" data-mode="time" data-value="10">10s</button>
+                    <button class="config-btn" data-mode="time" data-value="30">30s</button>
+                    <button class="config-btn" data-mode="time" data-value="60">60s</button>
+                    <input type="number" class="custom-input" id="customTime" placeholder="custom" min="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">WPM</div>
+                <div class="stat-value" id="wpm">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Progress</div>
+                <div class="stat-value" id="progress">0/10</div>
+            </div>
+            <div class="stat" id="timerStat" style="opacity: 0.3;">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="time">-</div>
+            </div>
+        </div>
+
+        <div class="typing-area" id="typingArea">
+            <div class="words-wrapper" id="wordsWrapper"></div>
+            <input type="text" class="hidden-input" id="hiddenInput" autocomplete="off" autocapitalize="off" spellcheck="false">
+        </div>
+
+        <button class="restart-btn" id="restartBtn">Restart (Tab)</button>
+    </div>
+
+    <div class="result-overlay" id="resultOverlay">
+        <div class="result-header">
+            <div class="result-wpm" id="finalWpm">0</div>
+            <div class="result-label">Words Per Minute</div>
+        </div>
+
+        <div class="result-stats">
+            <div class="result-stat">
+                <div class="result-stat-value" id="finalAccuracy">0%</div>
+                <div class="result-stat-label">Accuracy</div>
+            </div>
+            <div class="result-stat">
+                <div class="result-stat-value" id="finalRaw">0</div>
+                <div class="result-stat-label">Raw</div>
+            </div>
+            <div class="result-stat">
+                <div class="result-stat-value" id="finalChars">0</div>
+                <div class="result-stat-label">Chars</div>
+            </div>
+            <div class="result-stat">
+                <div class="result-stat-value" id="finalErrors">0</div>
+                <div class="result-stat-label">Errors</div>
+            </div>
+            <div class="result-stat">
+                <div class="result-stat-value" id="finalConsistency">0%</div>
+                <div class="result-stat-label">Consistency</div>
+            </div>
+        </div>
+
+        <div class="replay-section">
+            <div class="replay-header">
+                <div class="replay-title">Replay</div>
+                <div class="replay-controls">
+                    <button class="replay-btn" id="replayPlay">Play</button>
+                    <button class="replay-btn" id="replayPause">Pause</button>
+                    <button class="replay-btn" id="replayReset">Reset</button>
+                </div>
+            </div>
+            <div class="replay-container" id="replayContainer">
+                <div class="replay-words" id="replayWords"></div>
+                <div class="replay-cursor" id="replayCursor"></div>
+                <div class="replay-progress" id="replayProgress"></div>
+            </div>
+            <div class="heatmap-legend">
+                <div class="legend-item">
+                    <div class="legend-box correct"></div>
+                    <span>Correct</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box incorrect"></div>
+                    <span>Incorrect</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box missing"></div>
+                    <span>Missed</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="restart-btn visible" onclick="game.restart()">Try Again</button>
+            <button class="restart-btn visible" onclick="game.closeResults()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>    
+</body>
+</html>
